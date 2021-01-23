@@ -7,7 +7,7 @@
     "test": "echo \"Error: There isn't any kind of test in this project\" && exit 1",
     "start": "node server.js"
   },
-  "author": "leandrocapuano@gmail.com",
+  "author": "daniel.jose.leite@ccc.ufcg.edu.br",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.12.3",
