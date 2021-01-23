@@ -1,6 +1,7 @@
 const neDB = require('../configurations/database')
 const api = {}
 
+/* Daniel José di Navaronne */
 /* O método findAll retorna todos os cartões já cadastrados e lista por ordem alfabetica do Customer Name */
 api.findAll = (request, response) => {
     neDB.find({}).sort({customerName: 1}).exec( (exception, cards) => {
@@ -77,20 +78,10 @@ api.paginationSorting = (request, response) => {
     var sortBy = request.query.sortBy,
         pageSize = request.query.pageSize,
         skip = request.query.skip
-    
 
-
-    if (typeof sortBy === 'undefined') {
-        sortBy = "cardNumber"
-    }
-    if (typeof pageSize === 'undefined') {
-        pageSize = 15
-    }
-    if (typeof skip === 'undefined') {
-        skip = 0
-    }
-
-    
+    if (typeof sortBy === 'undefined') {     sortBy = "cardNumber"   }
+    if (typeof pageSize === 'undefined') {   pageSize = 15   }
+    if (typeof skip === 'undefined') {   skip = 0    }    
 
     neDB.find({}).sort({ [sortBy]: 1 }).skip(skip).limit(pageSize).exec(function (exception, cards) {
         if (exception) {
@@ -99,7 +90,6 @@ api.paginationSorting = (request, response) => {
             response.status(exception.status)
             response.json({ 'message': sentence })
         }
-
         response.status(201)
         response.json(cards)
     });
