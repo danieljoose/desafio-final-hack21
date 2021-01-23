@@ -70,5 +70,39 @@ api.update = (request, response) => {
      })
 }
 
+/* O método paginatioSorting ordena a lista pelo numero do cartão, tendo 15 como o limite de paginas */
+/* INCOMPLETO */
+api.paginationSorting = (request, response) => {
+
+    var sortBy = request.query.sortBy,
+        pageSize = request.query.pageSize,
+        skip = request.query.skip
+    
+
+
+    if (typeof sortBy === 'undefined') {
+        sortBy = "cardNumber"
+    }
+    if (typeof pageSize === 'undefined') {
+        pageSize = 15
+    }
+    if (typeof skip === 'undefined') {
+        skip = 0
+    }
+
+    
+
+    neDB.find({}).sort({ [sortBy]: 1 }).skip(skip).limit(pageSize).exec(function (exception, cards) {
+        if (exception) {
+            const sentence = "Opa, deu errado a tentativa de listar de forma ordenada!"
+            console.log(sentence, exception)
+            response.status(exception.status)
+            response.json({ 'message': sentence })
+        }
+
+        response.status(201)
+        response.json(cards)
+    });
+}
 
 module.exports = api
