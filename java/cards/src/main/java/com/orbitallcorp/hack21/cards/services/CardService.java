@@ -56,4 +56,20 @@ public class CardService {
         response.put("deletado", Boolean.TRUE);
         return response;
     }
+
+
+    /* Metodo service do Pagination and Sorting (Incompleto)*/
+//    public List<Card> getPaginationAndSorting(Integer pageNo, Integer pageSize, Long sortBy){
+//
+//        Pageable paging = PageRequest.of(pageNo, pageSize, Sort.by(sortBy));
+//
+//        Page<Card> pagedResult = cardRepository.findAll(paging);
+//
+//        if(pageResult.hasContent()){
+//            return pagedResult.getContent();
+//        } else {
+//            return new ArrayList<Card>();
+//        }
+//
+//    }
 }

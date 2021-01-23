@@ -46,4 +46,15 @@ public class CardController {
         Map<String, Boolean> delCard = cardService.deleteCard(id);
         return delCard;
     }
+
+    /* Metodo controller do Pagination and Sorting (Incompleto)*/
+//    @GetMapping("/paginationAndSorting")
+//    public ResponseEntity<List<Card>> getPaginationAndSorting(@RequestParam(defaultValue="0") Integer pageNo,
+//                                                              @RequestParam(defaultValue="10") Integer pageSize,
+//                                                              @RequestParam(defaultValue="id") Long sortBy){
+//
+//        List<Card> cards = cardService.getPagingAndSorting(pageNo, pageSize, sortBy);
+//        return new ResponseEntity<List<Card>>(cards, new HttpHeaders(), HttpStatus.OK);
+//    }
+
 }
